@@ -1,141 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Upgraded Barnacle API: Generate Pixel Art from Bitmap Strings" />
-        <meta name="author" content="Upgraded Barnacle Team" />
-        <title>Upgraded Barnacle API</title>
-        <!-- Bootstrap CSS -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #121212;
-                color: white;
-                margin: 0;
-                padding: 0;
-            }
-            h1, h2 {
-                color: #ff6347;
-                text-align: center;
-                margin-bottom: 20px;
-            }
-            p, ul {
-                color: #ddd;
-                line-height: 1.6;
-                text-align: center;
-            }
-            section {
-                padding: 60px 0;
-                margin: 20px 0;
-            }
-            .content-container {
-                max-width: 800px;
-                margin: auto;
-                padding: 20px;
-                background-color: #1e1e1e;
-                border-radius: 8px;
-            }
-            .button {
-                background-color: #ff6347;
-                color: white;
-                padding: 15px 30px;
-                border: none;
-                font-size: 16px;
-                cursor: pointer;
-                margin-top: 20px;
-                border-radius: 5px;
-                text-align: center;
-                text-decoration: none;
-            }
-            .button:hover {
-                background-color: #ff4500;
-            }
-            /* Scroll Animation */
-            .fade-in {
-                opacity: 0;
-                transform: translateY(50px);
-                animation: fadeInUp 1s forwards;
-            }
-            @keyframes fadeInUp {
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            .fade-in-delay {
-                animation: fadeInUp 1s forwards;
-                animation-delay: 0.5s;
-            }
-            /* For animation trigger */
-            section {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            section.visible {
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Upgraded Barnacle API: Generate Pixel Art from Bitmap Strings" />
+    <meta name="author" content="Upgraded Barnacle Team" />
+    <title>Upgraded Barnacle API</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+        h1, h2 {
+            color: #ff6347;
+        }
+        .button {
+            background-color: #ff6347;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #ff4500;
+        }
+        section {
+            padding: 60px 0;
+        }
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards;
+        }
+        .fade-in-delay {
+            animation: fadeInUp 1s forwards;
+            animation-delay: 0.5s;
+        }
+        @keyframes fadeInUp {
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
-        </style>
-    </head>
-    <body>
-        <!-- Header Section -->
-        <section class="fade-in">
-            <div class="container content-container">
-                <h1>Upgraded Barnacle API</h1>
-                <p>Generate pixel art directly from bitmap strings. Convert 16x16 bitmap strings into vibrant images using our API.</p>
-                <a href="https://github.com/your-repo/upgraded-barnacle-api" class="button">Get Started</a>
-            </div>
-        </section>
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <section class="fade-in">
+        <div class="container">
+            <h1>Upgraded Barnacle API</h1>
+            <p>Generate pixel art directly from bitmap strings. Convert 16x16 bitmap strings into vibrant images using our API.</p>
+            <a href="https://github.com/your-repo/upgraded-barnacle-api" class="button">Get Started</a>
+        </div>
+    </section>
 
-        <!-- Features Section -->
-        <section class="fade-in-delay">
-            <div class="container content-container">
-                <h2>Why Use the Upgraded Barnacle API?</h2>
-                <ul>
-                    <li><strong>Generate Pixel Art:</strong> Convert 16x16 bitmap strings into pixel art images.</li>
-                    <li><strong>Simple & Secure:</strong> Handle requests securely with an easy-to-use API.</li>
-                    <li><strong>Customization:</strong> Tailor your images with unique bitmap strings for creative results.</li>
-                    <li><strong>Fast Processing:</strong> Quick response times with minimal latency.</li>
-                </ul>
-            </div>
-        </section>
+    <!-- Features Section -->
+    <section class="fade-in-delay">
+        <div class="container">
+            <h2>Why Use the Upgraded Barnacle API?</h2>
+            <ul>
+                <li><strong>Generate Pixel Art:</strong> Convert 16x16 bitmap strings into pixel art images.</li>
+                <li><strong>Simple & Secure:</strong> Handle requests securely with an easy-to-use API.</li>
+                <li><strong>Customization:</strong> Tailor your images with unique bitmap strings for creative results.</li>
+                <li><strong>Fast Processing:</strong> Quick response times with minimal latency.</li>
+            </ul>
+        </div>
+    </section>
 
-        <!-- Getting Started Section -->
-        <section class="fade-in">
-            <div class="container content-container">
-                <h2>Getting Started</h2>
-                <p>Follow these steps to start using the Upgraded Barnacle API:</p>
-                <ul>
-                    <li><strong>Install the API:</strong> Clone the repository from <a href="https://github.com/your-repo/upgraded-barnacle-api" target="_blank">GitHub</a>.</li>
-                    <li><strong>Send API Requests:</strong> Use the provided API endpoints to generate pixel art from your bitmap string.</li>
-                    <li><strong>Customize:</strong> Modify the bitmap string for different pixel art generation.</li>
-                </ul>
-                <p>Example of a request:</p>
-                <pre><code>GET https://upgraded-barnacle-api.example.com/generate?bitmap=0000000000000000-0000000000000000-0000000000000000...</code></pre>
-            </div>
-        </section>
+    <!-- Getting Started Section -->
+    <section class="fade-in">
+        <div class="container">
+            <h2>Getting Started</h2>
+            <p>Follow these steps to start using the Upgraded Barnacle API:</p>
+            <ul>
+                <li><strong>Install the API:</strong> Clone the repository from <a href="https://github.com/your-repo/upgraded-barnacle-api" target="_blank">GitHub</a>.</li>
+                <li><strong>Send API Requests:</strong> Use the provided API endpoints to generate pixel art from your bitmap string.</li>
+                <li><strong>Customize:</strong> Modify the bitmap string for different pixel art generation.</li>
+            </ul>
+            <p>Example of a request:</p>
+            <pre><code>GET https://upgraded-barnacle-api.example.com/generate?bitmap=0000000000000000-0000000000000000-0000000000000000...</code></pre>
+        </div>
+    </section>
 
-        <!-- Bootstrap JS and Scroll Animation Trigger -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script>
-            // Scroll Animation Trigger
-            const sections = document.querySelectorAll('section');
+    <!-- Bootstrap JS and Scroll Animation Trigger -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Scroll Animation Trigger
+        const sections = document.querySelectorAll('section');
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.2 });
-
-            sections.forEach(section => {
-                observer.observe(section);
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
             });
-        </script>
-    </body>
+        }, { threshold: 0.2 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
 </html>
