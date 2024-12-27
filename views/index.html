@@ -8,6 +8,8 @@
     <title>Upgraded Barnacle API</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- AOS Library -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <style>
         body {
             background-color: #121212;
@@ -40,27 +42,19 @@
         section {
             padding: 60px 0;
         }
-        /* Scroll Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 1s forwards;
-        }
-        .fade-in-delay {
-            animation: fadeInUp 1s forwards;
-            animation-delay: 0.5s;
-        }
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Example request styling */
+        pre, code {
+            color: white;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
     <!-- Header Section -->
-    <section class="fade-in">
+    <section data-aos="fade-up">
         <div class="container">
             <h1>Upgraded Barnacle API</h1>
             <p>Generate pixel art directly from bitmap strings. Convert 16x16 bitmap strings into vibrant images using our API.</p>
@@ -69,7 +63,7 @@
     </section>
 
     <!-- Features Section -->
-    <section class="fade-in-delay">
+    <section data-aos="fade-up" data-aos-delay="200">
         <div class="container">
             <h2>Why Use the Upgraded Barnacle API?</h2>
             <ul>
@@ -82,7 +76,7 @@
     </section>
 
     <!-- Getting Started Section -->
-    <section class="fade-in">
+    <section data-aos="fade-up" data-aos-delay="400">
         <div class="container">
             <h2>Getting Started</h2>
             <p>Follow these steps to start using the Upgraded Barnacle API:</p>
@@ -96,25 +90,19 @@
         </div>
     </section>
 
-    <!-- Bootstrap JS and Scroll Animation Trigger -->
+    <!-- Bootstrap JS, AOS JS and Scroll Animation Trigger -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-        // Scroll Animation Trigger
-        const sections = document.querySelectorAll('section');
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, { threshold: 0.2 });
-
-        sections.forEach(section => {
-            observer.observe(section);
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,  // Duration of the animation in milliseconds
+            easing: 'ease-in-out',  // Easing function for smoothness
+            once: true,  // Ensures animation happens only once
         });
     </script>
 </body>
 </html>
+
