@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upgraded Barnacle API</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS (Animate on Scroll) Library -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Adding jQuery -->
+  <style>
+    /* General styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+      color: #000000; /* Default text color black */
+    }
+
+    h1, h2, h3, h4 {
+      color: #000000; /* Text color for headers */
+    }
+
+    /* Navbar styles */
+    nav {
+      background-color: #007bff;
+    }
+
+    nav .nav-link {
+      color: #ffffff !important;
+    }
+
+    nav .nav-link:hover {
+      color: #ffcc00 !important;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+    }
+
+    /* Hero section styles */
+    .hero {
+      background-color: #007bff;
+      color: #ffffff;
+      padding: 80px 0;
+      text-align: center;
+      animation: fadeIn 2s ease-out;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+    }
+
+    .btn-primary {
+      background-color: #ffcc00;
+      border: none;
+      font-size: 1.1rem;
+    }
+
+    .btn-primary:hover {
+      background-color: #ffb400;
+    }
+
+    /* Table and content formatting */
+    .table-striped tbody tr:nth-child(odd) {
+      background-color: #f1f1f1;
+    }
+
+    .table th, .table td {
+      vertical-align: middle;
+    }
+
+    /* Highlighted blocks */
+    .highlight {
+      background-color: #f1f1f1;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .callout {
+      background-color: #e9ecef;
+      border-left: 5px solid #007bff;
+      padding: 20px;
+      margin-bottom: 30px;
+      animation: slideIn 1s ease-out;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #007bff;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Upgraded Barnacle API</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#overview">Overview</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#api-endpoint">API Endpoint</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#example-use-cases">Use Cases</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#additional-notes">Additional Notes</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" data-aos="fade-up">
+    <div class="container">
+      <h1>Upgraded Barnacle API</h1>
+      <p>Effortlessly generate bitmap images using a 16x16 grid with just a string. Bring your pixel art creations to life!</p>
+      <a href="#api-endpoint" class="btn btn-primary">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Documentation Content -->
+  <div class="container py-5">
+
+    <!-- Overview Section -->
+    <div id="overview" class="callout" data-aos="fade-up" data-aos-delay="200">
+      <h2>Overview</h2>
+      <p>The <strong>Upgraded Barnacle API</strong> allows you to generate bitmap images in a 16x16 grid format using the <code>canvas</code> library. This API converts a bitmap string into a PNG image, where each character in the bitmap represents a specific color.</p>
+    </div>
+
+    <!-- Base10 Color Key Section -->
+    <h2 id="base10-color-key" class="mt-4" data-aos="fade-up" data-aos-delay="300">Base10 Color Key</h2>
+    <p>The following color codes are used in the bitmap string:</p>
+    <table class="table table-striped" data-aos="fade-up" data-aos-delay="400">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Color</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td>Black</td></tr>
+        <tr><td>1</td><td>White</td></tr>
+        <tr><td>2</td><td>Red</td></tr>
+        <tr><td>3</td><td>Green</td></tr>
+        <tr><td>4</td><td>Blue</td></tr>
+        <tr><td>5</td><td>Yellow</td></tr>
+        <tr><td>6</td><td>Magenta</td></tr>
+        <tr><td>7</td><td>Cyan</td></tr>
+        <tr><td>8</td><td>Orange</td></tr>
+        <tr><td>9</td><td>Gray</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="api-endpoint" class="mt-4" data-aos="fade-up" data-aos-delay="500">API Endpoint</h2>
+    <h3><code>GET /generate</code></h3>
+    <p>This endpoint generates a PNG image from a bitmap string.</p>
+
+    <h4>Base URL</h4>
+    <p>The API is hosted at: <a href="https://upgraded-barnacle-rust.vercel.app/" class="btn btn-primary" target="_blank">Visit the API</a></p>
+
+    <h4>Query Parameters</h4>
+    <ul>
+      <li><code>bitmap</code> (required): A string representing the 16x16 bitmap. Each line must contain 16 digits, and the lines must be separated by <code>-</code>.</li>
+    </ul>
+
+    <h4>Example Request</h4>
+    <div class="highlight" data-aos="fade-up" data-aos-delay="600">
+      <pre><code class="lang-http">GET https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000</code></pre>
+    </div>
+
+    <h4>Example Response</h4>
+    <p>A PNG image is returned that visually represents the provided bitmap.</p>
+    <p><img src="https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000" alt="Generated Image"></p>
+
+    <!-- Use Cases Section -->
+    <div id="example-use-cases" data-aos="fade-up" data-aos-delay="700">
+      <h2 class="mt-5">Use Cases</h2>
+      <p>The Barnacle API can be used in various applications, including:</p>
+      <ul>
+        <li>Pixel art generation tools</li>
+        <li>Games or applications with bitmap-based design elements</li>
+        <li>Data visualization using pixel grids</li>
+      </ul>
+    </div>
+
+    <!-- Additional Notes Section -->
+    <div id="additional-notes" class="callout" data-aos="fade-up" data-aos-delay="800">
+      <h2>Additional Notes</h2>
+      <p>The API allows you to generate 16x16 pixel bitmap images, but be mindful of the limitations related to the size and complexity of your requests. Ensure the bitmap string adheres to the 16x16 grid structure to avoid errors.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Upgraded Barnacle API. All rights reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+  <!-- AOS (Animate On Scroll) Script -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true });
+
+    // Example of jQuery to fade in the hero section after the page load
+    $(document).ready(function() {
+      $('.hero').fadeIn(2000);  // Make the hero section fade in after loading
+    });
+  </script>
+</body>
+</html>
