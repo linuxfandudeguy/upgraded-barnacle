@@ -64,7 +64,7 @@ app.get('/generate', (req, res) => {
 
 // Handle cases where the /views directory doesn't exist (404 error for invalid static paths)
 app.use((req, res) => {
-  res.status(404).send('404: Cannot GET /');
+  res.status(404).send('404: Cannot GET ');
 });
 
 // Start the server
