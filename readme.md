@@ -1,7 +1,7 @@
-# Bitmap Canvas API Documentation
+# Updated Barnacle API Documentation
 
 ## Overview
-The Bitmap Canvas API allows users to generate bitmap images using a simple 16x16 grid format and the `canvas` library. The API converts a bitmap string into a PNG image, where each character in the bitmap string represents a specific color.
+The Updated Barnacle API allows users to generate bitmap images using a simple 16x16 grid format and the `canvas` library. The API converts a bitmap string into a PNG image, where each character in the bitmap string represents a specific color.
 
 ## Base10 Color Key
 The following color codes are used in the bitmap string:
