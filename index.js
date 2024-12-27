@@ -1,5 +1,6 @@
 const express = require('express');
 const { createCanvas } = require('canvas');
+const path = require('path');
 
 const app = express();
 const PORT = 3000;
@@ -40,6 +41,10 @@ function drawBitmap(bitmap) {
   return canvas;
 }
 
+// Attempt to serve static files from /views directory
+const viewsDir = path.join(__dirname, 'views');
+app.use(express.static(viewsDir));
+
 // API endpoint to generate an image from a bitmap
 app.get('/generate', (req, res) => {
   const { bitmap } = req.query;
@@ -55,6 +60,11 @@ app.get('/generate', (req, res) => {
   } catch (err) {
     res.status(500).send('Error generating image.');
   }
+});
+
+// Handle cases where the /views directory doesn't exist (404 error for invalid static paths)
+app.use((req, res) => {
+  res.status(404).send('404: Cannot GET /');
 });
 
 // Start the server
