@@ -6,7 +6,6 @@
   <title>Upgraded Barnacle API - Pixel Art from Strings</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom Styles -->
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -22,9 +21,6 @@
     }
     nav .nav-link:hover {
       color: #ffcc00 !important;
-    }
-    .navbar-brand {
-      font-weight: bold;
     }
 
     .hero {
@@ -52,36 +48,17 @@
       background-color: #ffb400;
     }
 
-    .feature {
-      background-color: #f1f1f1;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      margin-bottom: 30px;
-    }
-
-    .highlight {
-      background-color: #f9f9f9;
-      border-left: 5px solid #007bff;
-      padding: 15px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
     footer {
       background-color: #007bff;
       color: white;
       padding: 20px 0;
       text-align: center;
     }
-
-    .feature-list h2 {
-      margin-bottom: 30px;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Navigation Bar -->
+  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <a class="navbar-brand" href="#">Upgraded Barnacle API</a>
@@ -109,64 +86,32 @@
 
   <!-- Overview Section -->
   <div class="container py-5" id="overview">
-    <div class="feature">
-      <h2>Overview</h2>
-      <p>The Upgraded Barnacle API transforms bitmap strings into colorful 16x16 PNG images, enabling pixel-perfect visualizations from a string of numbers. Ideal for developers, designers, and artists who want to quickly visualize pixel art!</p>
-    </div>
+    <h2 class="display-4">Overview</h2>
+    <p>The Upgraded Barnacle API allows you to generate pixel art from bitmap strings. A simple, yet powerful tool to visualize pixel-based art and design directly from a string of numbers.</p>
   </div>
 
   <!-- API Endpoint Section -->
   <div class="container py-5" id="api-endpoint">
-    <div class="highlight">
-      <h2>API Endpoint</h2>
-      <p>The API provides an easy-to-use endpoint to generate bitmap images in seconds. Simply provide the bitmap string and receive a PNG image in return.</p>
-      <h4>Base URL</h4>
-      <p><a href="https://upgraded-barnacle-rust.vercel.app/" target="_blank">Visit the API</a></p>
-      <h4>Query Parameters</h4>
-      <ul>
-        <li><strong>bitmap</strong> (required): A 16x16 bitmap string, each line must contain 16 digits and the lines are separated by <code>-</code>.</li>
-      </ul>
-      <h4>Example Request</h4>
-      <pre><code class="lang-http">GET https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000</code></pre>
-      <h4>Example Response</h4>
-      <p><img src="https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000" alt="Generated Image"></p>
-    </div>
-  </div>
+    <h2 class="display-4">API Endpoint</h2>
+    <p>The API provides an easy-to-use endpoint to generate bitmap images from bitmap strings in seconds.</p>
+    <h4>Base URL</h4>
+    <p><a href="https://upgraded-barnacle-rust.vercel.app/" target="_blank">Visit the API</a></p>
 
-  <!-- Features Section -->
-  <div class="container py-5">
-    <h2 class="feature-list">Why Use the Upgraded Barnacle API?</h2>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="feature">
-          <h4>Quick Pixel Art Generation</h4>
-          <p>Transform any bitmap string into a pixel-perfect image with just a click. Ideal for rapid visualization of pixel art designs and concepts.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="feature">
-          <h4>Flexible and Customizable</h4>
-          <p>The bitmap string format allows full control over the image output, making it highly customizable to suit your artistic needs.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="feature">
-          <h4>Perfect for Developers</h4>
-          <p>Incorporate the API into your applications to automatically generate pixel art, avatars, or game assets directly from strings.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="feature">
-          <h4>Easy to Use</h4>
-          <p>With a simple GET request, you can generate bitmap images in seconds. No complex setup required, just a string of numbers.</p>
-        </div>
-      </div>
-    </div>
+    <h4>Query Parameters</h4>
+    <ul>
+      <li><strong>bitmap</strong> (required): A 16x16 bitmap string, each line must contain 16 digits and the lines are separated by <code>-</code>.</li>
+    </ul>
+
+    <h4>Example Request</h4>
+    <pre><code class="lang-http">GET https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000</code></pre>
+
+    <h4>Example Response</h4>
+    <p><img src="https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000" alt="Generated Image"></p>
   </div>
 
   <!-- Use Cases Section -->
   <div class="container py-5" id="use-cases">
-    <h2>Use Cases</h2>
+    <h2 class="display-4">Use Cases</h2>
     <ul>
       <li>Pixel art generation tools</li>
       <li>Game and app design with pixel-based graphics</li>
@@ -174,7 +119,7 @@
     </ul>
   </div>
 
-  <!-- Footer -->
+  <!-- Footer Section -->
   <footer>
     <p>&copy; 2024 Upgraded Barnacle API. All rights reserved.</p>
   </footer>
