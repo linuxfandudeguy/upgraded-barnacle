@@ -3,66 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Upgraded Barnacle API - Generate bitmap images with ease">
-  <meta name="author" content="Barnacle Team">
-  <title>Upgraded Barnacle API</title>
+  <title>Upgraded Barnacle API - Pixel Art from Strings</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom Styles -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <style>
     body {
       font-family: 'Arial', sans-serif;
       background-color: #f8f9fa;
       color: #333;
     }
-    .navbar {
+
+    nav {
       background-color: #007bff;
     }
-    .navbar-nav .nav-link {
-      color: white !important;
+    nav .nav-link {
+      color: #ffffff !important;
     }
-    .navbar-nav .nav-link:hover {
+    nav .nav-link:hover {
       color: #ffcc00 !important;
     }
+    .navbar-brand {
+      font-weight: bold;
+    }
+
     .hero {
       background-color: #007bff;
       color: white;
       padding: 80px 0;
       text-align: center;
     }
+
     .hero h1 {
       font-size: 3rem;
       font-weight: bold;
     }
+
     .hero p {
       font-size: 1.25rem;
     }
+
     .btn-primary {
       background-color: #ffcc00;
       border: none;
-      font-size: 1.1rem;
     }
+
     .btn-primary:hover {
       background-color: #ffb400;
     }
-    .callout {
-      background-color: #e9ecef;
-      border-left: 5px solid #007bff;
-      padding: 20px;
+
+    .feature {
+      background-color: #f1f1f1;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       margin-bottom: 30px;
     }
+
+    .highlight {
+      background-color: #f9f9f9;
+      border-left: 5px solid #007bff;
+      padding: 15px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
     footer {
       background-color: #007bff;
       color: white;
       padding: 20px 0;
       text-align: center;
     }
+
+    .feature-list h2 {
+      margin-bottom: 30px;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container px-5">
+    <div class="container">
       <a class="navbar-brand" href="#">Upgraded Barnacle API</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -71,8 +92,7 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
           <li class="nav-item"><a class="nav-link" href="#api-endpoint">API Endpoint</a></li>
-          <li class="nav-item"><a class="nav-link" href="#example-use-cases">Use Cases</a></li>
-          <li class="nav-item"><a class="nav-link" href="#additional-notes">Additional Notes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#use-cases">Use Cases</a></li>
         </ul>
       </div>
     </div>
@@ -82,54 +102,76 @@
   <section class="hero">
     <div class="container">
       <h1>Upgraded Barnacle API</h1>
-      <p>Effortlessly generate bitmap images using a 16x16 grid with just a string. Bring your pixel art creations to life!</p>
+      <p>Generate pixel art in seconds from a bitmap string! Convert any bitmap string into a vibrant 16x16 grid image.</p>
       <a href="#api-endpoint" class="btn btn-primary">Get Started</a>
     </div>
   </section>
 
-  <!-- Documentation Content -->
-  <div class="container py-5">
-    <!-- Overview Section -->
-    <div id="overview" class="callout">
+  <!-- Overview Section -->
+  <div class="container py-5" id="overview">
+    <div class="feature">
       <h2>Overview</h2>
-      <p>The <strong>Upgraded Barnacle API</strong> allows you to generate bitmap images in a 16x16 grid format using the <code>canvas</code> library. This API converts a bitmap string into a PNG image, where each character in the bitmap represents a specific color.</p>
+      <p>The Upgraded Barnacle API transforms bitmap strings into colorful 16x16 PNG images, enabling pixel-perfect visualizations from a string of numbers. Ideal for developers, designers, and artists who want to quickly visualize pixel art!</p>
     </div>
+  </div>
 
-    <!-- API Endpoint Section -->
-    <h2 id="api-endpoint" class="mt-4">API Endpoint</h2>
-    <h3><code>GET /generate</code></h3>
-    <p>This endpoint generates a PNG image from a bitmap string.</p>
-    <h4>Base URL</h4>
-    <p>The API is hosted at: <a href="https://upgraded-barnacle-rust.vercel.app/" target="_blank" class="btn btn-primary">Visit the API</a></p>
-    <h4>Query Parameters</h4>
-    <ul>
-      <li><code>bitmap</code> (required): A string representing the 16x16 bitmap. Each line must contain 16 digits, and the lines must be separated by <code>-</code>.</li>
-    </ul>
-
-    <h4>Example Request</h4>
-    <div class="callout">
-      <pre><code class="lang-http">GET https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000</code></pre>
-    </div>
-
-    <h4>Example Response</h4>
-    <p>A PNG image is returned that visually represents the provided bitmap:</p>
-    <p><img src="https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000" alt="Generated Image"></p>
-
-    <!-- Use Cases Section -->
-    <div id="example-use-cases">
-      <h2 class="mt-5">Use Cases</h2>
+  <!-- API Endpoint Section -->
+  <div class="container py-5" id="api-endpoint">
+    <div class="highlight">
+      <h2>API Endpoint</h2>
+      <p>The API provides an easy-to-use endpoint to generate bitmap images in seconds. Simply provide the bitmap string and receive a PNG image in return.</p>
+      <h4>Base URL</h4>
+      <p><a href="https://upgraded-barnacle-rust.vercel.app/" target="_blank">Visit the API</a></p>
+      <h4>Query Parameters</h4>
       <ul>
-        <li>Pixel art generation tools</li>
-        <li>Games or applications with bitmap-based design elements</li>
-        <li>Data visualization using pixel grids</li>
+        <li><strong>bitmap</strong> (required): A 16x16 bitmap string, each line must contain 16 digits and the lines are separated by <code>-</code>.</li>
       </ul>
+      <h4>Example Request</h4>
+      <pre><code class="lang-http">GET https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000</code></pre>
+      <h4>Example Response</h4>
+      <p><img src="https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000" alt="Generated Image"></p>
     </div>
+  </div>
 
-    <!-- Additional Notes Section -->
-    <div id="additional-notes" class="callout">
-      <h2>Additional Notes</h2>
-      <p>The API allows you to generate 16x16 pixel bitmap images, but be mindful of the limitations related to the size and complexity of your requests. Ensure the bitmap string adheres to the 16x16 grid structure to avoid errors.</p>
+  <!-- Features Section -->
+  <div class="container py-5">
+    <h2 class="feature-list">Why Use the Upgraded Barnacle API?</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="feature">
+          <h4>Quick Pixel Art Generation</h4>
+          <p>Transform any bitmap string into a pixel-perfect image with just a click. Ideal for rapid visualization of pixel art designs and concepts.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="feature">
+          <h4>Flexible and Customizable</h4>
+          <p>The bitmap string format allows full control over the image output, making it highly customizable to suit your artistic needs.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="feature">
+          <h4>Perfect for Developers</h4>
+          <p>Incorporate the API into your applications to automatically generate pixel art, avatars, or game assets directly from strings.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="feature">
+          <h4>Easy to Use</h4>
+          <p>With a simple GET request, you can generate bitmap images in seconds. No complex setup required, just a string of numbers.</p>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- Use Cases Section -->
+  <div class="container py-5" id="use-cases">
+    <h2>Use Cases</h2>
+    <ul>
+      <li>Pixel art generation tools</li>
+      <li>Game and app design with pixel-based graphics</li>
+      <li>Automated pixel visualization in art and data projects</li>
+    </ul>
   </div>
 
   <!-- Footer -->
@@ -137,8 +179,9 @@
     <p>&copy; 2024 Upgraded Barnacle API. All rights reserved.</p>
   </footer>
 
-  <!-- Bootstrap JS and Popper -->
+  <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
 </body>
 </html>
