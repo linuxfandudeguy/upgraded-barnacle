@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Updated Barnacle API Documentation" />
     <title>Updated Barnacle API Documentation</title>
 
@@ -16,90 +16,133 @@
 
     <style>
       body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        padding-top: 50px;
+        font-family: "Roboto", sans-serif;
+        background-color: #f9f9fb;
+        color: #333;
+        margin: 0;
+        padding: 0;
       }
 
       .container {
-        background-color: #ffffff;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        border-radius: 8px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        background: #ffffff;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 30px;
       }
 
       h1,
-      h2 {
-        color: #333;
+      h2,
+      h3,
+      h4 {
+        color: #2c3e50;
+        font-weight: bold;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-align: center;
       }
 
       p {
-        color: #555;
-        font-size: 16px;
-      }
-
-      pre {
-        background-color: #f8f8f8;
-        padding: 15px;
-        border-radius: 5px;
-        border: 1px solid #ddd;
-        font-family: monospace;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-      }
-
-      code {
-        background-color: #f0f0f0;
-        padding: 2px 5px;
-        border-radius: 4px;
+        font-size: 1rem;
+        line-height: 1.6;
       }
 
       table {
         width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        border-radius: 8px;
+        margin: 20px 0;
+        border-collapse: separate;
+        border-spacing: 0;
       }
 
-      th,
-      td {
-        padding: 12px;
-        text-align: left;
+      table th,
+      table td {
+        padding: 12px 15px;
         border: 1px solid #ddd;
-        border-radius: 8px;
       }
 
-      th {
+      table th {
         background-color: #f2f2f2;
+        font-weight: bold;
+        text-align: left;
       }
 
-      td {
-        background-color: #fafafa;
+      table td {
+        background-color: #ffffff;
+      }
+
+      pre {
+        background: #f4f4f9;
+        padding: 15px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        border: 1px solid #ddd;
+        overflow-x: auto;
+      }
+
+      code {
+        background-color: #eef;
+        padding: 2px 5px;
+        border-radius: 4px;
+      }
+
+      .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        font-size: 1rem;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+        text-decoration: none;
+        color: white;
       }
 
       .highlight {
+        font-weight: bold;
         color: #e74c3c;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px 0;
+        background: #f4f4f4;
+        border-top: 1px solid #ddd;
+        margin-top: 30px;
+        font-size: 0.9rem;
       }
     </style>
   </head>
-
   <body>
     <div class="container" data-aos="fade-up">
       <h1>Updated Barnacle API Documentation</h1>
-      <p>
-        Welcome to the Updated Barnacle API. This guide will help you generate bitmap images with a 16x16 grid using the Barnacle API.
+      <p class="text-muted">
+        This documentation provides all the information you need to use the
+        Updated Barnacle API for generating bitmap images.
       </p>
 
-      <div class="section" data-aos="fade-up">
+      <section data-aos="fade-up" data-aos-delay="100">
         <h2>Overview</h2>
         <p>
-          The Updated Barnacle API allows users to generate bitmap images using a simple 16x16 grid format and the <code>canvas</code> library. The API converts a bitmap string into a PNG image, where each character in the bitmap string represents a specific color.
+          The Updated Barnacle API allows users to generate bitmap images using
+          a 16x16 grid format and the <code>canvas</code> library. Each
+          character in the bitmap string corresponds to a color, which is
+          rendered into a PNG image.
         </p>
-      </div>
+      </section>
 
-      <div class="section" data-aos="fade-up">
+      <section data-aos="fade-up" data-aos-delay="200">
         <h2>Base10 Color Key</h2>
-        <table class="table table-bordered">
+        <table class="table table-striped table-bordered">
           <thead>
             <tr>
               <th>Code</th>
@@ -149,65 +192,52 @@
             </tr>
           </tbody>
         </table>
-        <p>Each bitmap must consist of **16 lines** with **16 digits per line**, separated by hyphens (<code>-</code>).</p>
-      </div>
+      </section>
 
-      <div class="section" data-aos="fade-up">
+      <section data-aos="fade-up" data-aos-delay="300">
         <h2>API Endpoint</h2>
         <h3>GET /generate</h3>
-        <p>Generates a PNG image from a bitmap string.</p>
+        <p>
+          This endpoint generates a PNG image from a 16x16 bitmap string. Each
+          bitmap line must contain 16 digits, separated by
+          <code>-</code>.
+        </p>
         <h4>Base URL</h4>
-        <p>The API is hosted at: <a href="https://upgraded-barnacle-rust.vercel.app/" target="_blank">https://upgraded-barnacle-rust.vercel.app/</a></p>
-
-        <h4>Query Parameters</h4>
-        <ul>
-          <li><strong>bitmap (required):</strong> A string representing the 16x16 bitmap. Each line must contain 16 digits, and the lines must be separated by <code>-</code>.</li>
-        </ul>
+        <p>
+          <a href="https://upgraded-barnacle-rust.vercel.app/" target="_blank">
+            https://upgraded-barnacle-rust.vercel.app/
+          </a>
+        </p>
 
         <h4>Example Request</h4>
-        <pre><code>GET https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000</code></pre>
+        <pre>
+GET https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000
+        </pre>
 
         <h4>Example Response</h4>
-        <p>A PNG image is returned that visually represents the provided bitmap:</p>
-        <img src="https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000" alt="Generated Image" style="max-width: 100%;" />
+        <img
+          src="https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000"
+          alt="Generated Example"
+          style="max-width: 100%; border-radius: 10px;"
+        />
+      </section>
 
-        <h4>Example Bitmap (16x16)</h4>
-        <pre><code>0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000</code></pre>
-
-        <h4>Response Headers</h4>
+      <section data-aos="fade-up" data-aos-delay="400">
+        <h2>Error Responses</h2>
         <ul>
-          <li><strong>Content-Type:</strong> <code>image/png</code></li>
+          <li>
+            <strong>400 Bad Request:</strong> Returned if the bitmap is
+            invalid. Example:
+            <code>Invalid bitmap. Must be 16 lines of 16 digits each.</code>
+          </li>
+          <li>
+            <strong>500 Internal Server Error:</strong> Returned if the image
+            cannot be generated.
+          </li>
         </ul>
+      </section>
 
-        <h4>Error Responses</h4>
-        <ul>
-          <li><strong>400 Bad Request:</strong> Returned if the <code>bitmap</code> parameter is invalid. Example: <code>Invalid bitmap. Must be 16 lines of 16 digits each.</code></li>
-          <li><strong>500 Internal Server Error:</strong> Returned if there is an error generating the image.</li>
-        </ul>
-      </div>
 
-      <div class="section" data-aos="fade-up">
-        <h2>Deployment and Development</h2>
-        <p>The API is deployed using Vercel.</p>
-      </div>
-
-      <div class="section" data-aos="fade-up">
-        <h2>Example Use Cases</h2>
-        <ul>
-          <li><strong>Generate Custom Graphics:</strong> Use the API to create pixel-art designs for games or illustrations.</li>
-          <li><strong>Dynamic Visualizations:</strong> Integrate the API into web applications to generate real-time visual data.</li>
-          <li><strong>Learning and Experimentation:</strong> Use the API as a tool for learning bitmap-based image generation.</li>
-        </ul>
-      </div>
-
-      <div class="section" data-aos="fade-up">
-        <h2>Additional Notes</h2>
-        <ul>
-          <li>Ensure the bitmap string is properly formatted to avoid errors.</li>
-          <li>The canvas size is set to 640x640 pixels, and each pixel is dynamically scaled to fit the grid.</li>
-          <li>This was mainly inspired by <a href="https://verumignis.com/bitmapgen/" target="_blank">bitmapgen</a>.</li>
-        </ul>
-      </div>
     </div>
 
     <!-- Bootstrap JS and dependencies -->
@@ -215,7 +245,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- Scripts for AOS -->
+    <!-- AOS JS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
       AOS.init();
