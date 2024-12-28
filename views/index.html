@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <meta name="description" content="Updated Barnacle API Documentation" />
     <title>Updated Barnacle API Documentation</title>
 
@@ -22,7 +25,7 @@
     <style>
       body {
         font-family: "Roboto", sans-serif;
-        background-color: #f9f9fb;
+        background: linear-gradient(135deg, #f0f4ff, #e3e8fc);
         color: #333;
       }
 
@@ -30,9 +33,10 @@
         margin-top: 50px;
         margin-bottom: 50px;
         background: #ffffff;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
         padding: 30px;
+        animation: fadeIn 1s ease-in-out;
       }
 
       h1,
@@ -46,6 +50,7 @@
         font-size: 2.5rem;
         margin-bottom: 20px;
         text-align: center;
+        color: #007bff;
       }
 
       table {
@@ -55,6 +60,7 @@
         margin-top: 20px;
         border-radius: 10px;
         overflow: hidden;
+        background: linear-gradient(135deg, #f9f9fb, #ffffff);
       }
 
       table th,
@@ -86,6 +92,11 @@
         border-color: #007bff;
         color: white;
         border-radius: 5px;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      .btn-primary:hover {
+        background-color: #0056b3;
       }
 
       #editor {
@@ -97,22 +108,27 @@
         border: 1px solid #ddd;
         border-radius: 5px;
         padding: 10px;
-        background-color: #f4f4f9;
+        background-color: #f9f9fb;
         resize: none;
       }
 
       footer {
         text-align: center;
         padding: 20px 0;
-        background: #f4f4f4;
-        border-top: 1px solid #ddd;
+        background: #e3e8fc;
         font-size: 0.9rem;
+        border-top: 1px solid #ddd;
       }
 
       img {
         max-width: 100%;
         border-radius: 10px;
         margin-top: 20px;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      img:hover {
+        transform: scale(1.02);
       }
     </style>
   </head>
@@ -136,7 +152,7 @@
 
       <section>
         <h2>Base10 Color Key</h2>
-        <table class="table table-bordered">
+        <table class="table table-bordered" data-aos="fade-right">
           <thead>
             <tr>
               <th>Code</th>
@@ -189,36 +205,6 @@
       </section>
 
       <section>
-        <h2>API Endpoint</h2>
-        <h3>GET /generate</h3>
-        <p>Generates a PNG image from a 16x16 bitmap string.</p>
-        <p><strong>Base URL:</strong> <a href="https://upgraded-barnacle-rust.vercel.app/" target="_blank">https://upgraded-barnacle-rust.vercel.app/</a></p>
-
-        <h4>Query Parameters</h4>
-        <ul>
-          <li><strong>bitmap (required):</strong> A 16x16 bitmap string. Each line should have exactly 16 digits, separated by hyphens (<code>-</code>).</li>
-        </ul>
-
-        <h4>Example Request</h4>
-        <pre>
-GET https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000
-        </pre>
-
-        <h4>Example Response</h4>
-        <p>A PNG image representing the bitmap.</p>
-        <img
-          src="https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000"
-          alt="Generated Bitmap"
-        />
-
-        <h4>Error Responses</h4>
-        <ul>
-          <li><code>400 Bad Request</code>: Invalid bitmap format.</li>
-          <li><code>500 Internal Server Error</code>: Unable to generate the image.</li>
-        </ul>
-      </section>
-
-      <section>
         <h2>Pixel Art Editor (Demo)</h2>
         <p>
           Use the editor below to input your 16x16 bitmap string. Click "Generate Image"
@@ -226,10 +212,10 @@ GET https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0
         </p>
         <textarea
           id="editor"
-          placeholder="0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000"
+          placeholder="Enter a 16x16 bitmap string separated by dashes..."
         ></textarea>
         <button id="generate" class="btn btn-primary mt-3">Generate Image</button>
-        <div id="result"></div>
+        <div id="result" data-aos="fade-up"></div>
       </section>
     </div>
 
