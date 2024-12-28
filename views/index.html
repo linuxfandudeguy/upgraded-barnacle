@@ -1,242 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <meta name="description" content="Updated Barnacle API Documentation" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Updated Barnacle API Documentation">
+    <meta name="author" content="Barnacle Team">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Updated Barnacle API Documentation</title>
-
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- AOS CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
     <style>
-      body {
-        font-family: "Roboto", sans-serif;
-        background: linear-gradient(135deg, #f0f4ff, #e3e8fc);
-        color: #333;
-      }
+        /* Ensure full width for markdown content */
+        .markdown-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-      .container {
-        margin-top: 50px;
-        margin-bottom: 50px;
-        background: #ffffff;
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        padding: 30px;
-        animation: fadeIn 1s ease-in-out;
-      }
+        /* Color swatches for Base10 Color Key */
+        .color-box {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+        }
 
-      h1,
-      h2,
-      h3 {
-        color: #2c3e50;
-        font-weight: 700;
-      }
+        pre {
+            background-color: #f6f8fa;
+            padding: 1em;
+            border-radius: 5px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
 
-      h1 {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-        text-align: center;
-        color: #007bff;
-      }
+        .request-line {
+            color: #007acc; /* blue */
+        }
 
-      table {
-        width: 100%;
-        border-collapse: separate;
-        border-spacing: 0;
-        margin-top: 20px;
-        border-radius: 10px;
-        overflow: hidden;
-        background: linear-gradient(135deg, #f9f9fb, #ffffff);
-      }
+        .keyword {
+            font-weight: bold;
+        }
 
-      table th,
-      table td {
-        padding: 12px 15px;
-        border: 1px solid #ddd;
-      }
+        .url {
+            color: #d73a49; /* red */
+        }
 
-      table th {
-        background-color: #f2f2f2;
-        font-weight: bold;
-      }
+        .parameter {
+            color: #6f42c1; /* purple */
+        }
 
-      table td {
-        background-color: #ffffff;
-      }
-
-      pre {
-        background: #f4f4f9;
-        padding: 15px;
-        border-radius: 5px;
-        font-size: 0.9rem;
-        border: 1px solid #ddd;
-        overflow-x: auto;
-      }
-
-      .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
-        color: white;
-        border-radius: 5px;
-        transition: background-color 0.3s ease-in-out;
-      }
-
-      .btn-primary:hover {
-        background-color: #0056b3;
-      }
-
-      #editor {
-        font-family: monospace;
-        font-size: 0.9rem;
-        line-height: 1.4;
-        width: 100%;
-        height: 300px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 10px;
-        background-color: #f9f9fb;
-        resize: none;
-      }
-
-      footer {
-        text-align: center;
-        padding: 20px 0;
-        background: #e3e8fc;
-        font-size: 0.9rem;
-        border-top: 1px solid #ddd;
-      }
-
-      img {
-        max-width: 100%;
-        border-radius: 10px;
-        margin-top: 20px;
-        transition: transform 0.3s ease-in-out;
-      }
-
-      img:hover {
-        transform: scale(1.02);
-      }
+        code {
+            font-family: monospace;
+        }
     </style>
-  </head>
-  <body>
-    <div class="container" data-aos="fade-up">
-      <h1>Updated Barnacle API Documentation</h1>
-      <p class="text-muted">
-        This API enables you to generate bitmap images using a simple 16x16 grid
-        format. Perfect for pixel art or experimentation with bitmap-based graphics.
-      </p>
+</head>
+<body>
+    <div class="markdown-body">
+        <h1>Updated Barnacle API Documentation</h1>
 
-      <section>
         <h2>Overview</h2>
-        <p>
-          The Updated Barnacle API creates PNG images based on a 16x16 bitmap grid.
-          Each character in the grid corresponds to a specific color, as defined
-          by the Base10 Color Key. Any missing or empty sections of the grid will
-          default to black.
-        </p>
-      </section>
+        <p>The Updated Barnacle API allows users to generate bitmap images using a simple 16x16 grid format and the <code>canvas</code> library. The API converts a bitmap string into a PNG image, where each character in the bitmap string represents a specific color.</p>
 
-      <section>
         <h2>Base10 Color Key</h2>
-        <table class="table table-bordered" data-aos="fade-right">
-          <thead>
-            <tr>
-              <th>Code</th>
-              <th>Color</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>0</td>
-              <td>Black</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>White</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Red</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Green</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Blue</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Yellow</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>Magenta</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>Cyan</td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>Orange</td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td>Gray</td>
-            </tr>
-          </tbody>
+        <p>The following color codes are used in the bitmap string:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Color</th>
+                    <th>Swatch</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>0</td><td>Black</td><td><span class="color-box" style="background-color: #000000;"></span></td></tr>
+                <tr><td>1</td><td>White</td><td><span class="color-box" style="background-color: #FFFFFF;"></span></td></tr>
+                <tr><td>2</td><td>Red</td><td><span class="color-box" style="background-color: #FF0000;"></span></td></tr>
+                <tr><td>3</td><td>Green</td><td><span class="color-box" style="background-color: #00FF00;"></span></td></tr>
+                <tr><td>4</td><td>Blue</td><td><span class="color-box" style="background-color: #0000FF;"></span></td></tr>
+                <tr><td>5</td><td>Yellow</td><td><span class="color-box" style="background-color: #FFFF00;"></span></td></tr>
+                <tr><td>6</td><td>Magenta</td><td><span class="color-box" style="background-color: #FF00FF;"></span></td></tr>
+                <tr><td>7</td><td>Cyan</td><td><span class="color-box" style="background-color: #00FFFF;"></span></td></tr>
+                <tr><td>8</td><td>Orange</td><td><span class="color-box" style="background-color: #FFA500;"></span></td></tr>
+                <tr><td>9</td><td>Gray</td><td><span class="color-box" style="background-color: #808080;"></span></td></tr>
+            </tbody>
         </table>
-      </section>
+        <p>Each bitmap must consist of <strong>16 lines</strong> with <strong>16 digits per line</strong>, separated by hyphens (<code>-</code>).</p>
 
-      <section>
-        <h2>Pixel Art Editor (Demo)</h2>
-        <p>
-          Use the editor below to input your 16x16 bitmap string. Click "Generate Image"
-          to see the output.
-        </p>
-        <textarea
-          id="editor"
-          placeholder="Enter a 16x16 bitmap string separated by dashes..."
-        ></textarea>
-        <button id="generate" class="btn btn-primary mt-3">Generate Image</button>
-        <div id="result" data-aos="fade-up"></div>
-      </section>
+        <h2>API Endpoint</h2>
+        <h3><code>GET /generate</code></h3>
+        <p>Generates a PNG image from a bitmap string.</p>
+
+        <h4>Base URL</h4>
+        <p>The API is hosted at: <a href="https://upgraded-barnacle-rust.vercel.app/">https://upgraded-barnacle-rust.vercel.app/</a></p>
+
+        <h4>Query Parameters</h4>
+        <ul>
+            <li><strong>bitmap</strong> (required): A string representing the 16x16 bitmap. Each line must contain 16 digits, and the lines must be separated by <code>-</code>.</li>
+        </ul>
+
+        <h4>Example Request</h4>
+        <pre><code><span class="request-line">GET</span> <span class="url">https://upgraded-barnacle-rust.vercel.app/generate</span><span class="keyword">?bitmap=</span><span class="parameter">0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000</span></code></pre>
+
+        <h4>Example Response</h4>
+        <p>A PNG image is returned that visually represents the provided bitmap.</p>
+        <img src="https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000" alt="Generated Bitmap Image">
+
+        <h4>Example Bitmap (16x16):</h4>
+        <pre><code class="language-text">0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000</code></pre>
+
+        <h2>Response Headers</h2>
+        <ul>
+            <li><strong>Content-Type</strong>: <code>image/png</code></li>
+        </ul>
+
+        <h2>Error Responses</h2>
+        <ul>
+            <li><strong>400 Bad Request</strong>: Returned if the <code>bitmap</code> parameter is invalid.
+                <ul>
+                    <li>Example: <code>Invalid bitmap. Must be 16 lines of 16 digits each.</code></li>
+                </ul>
+            </li>
+            <li><strong>500 Internal Server Error</strong>: Returned if there is an error generating the image.</li>
+        </ul>
+
+        <h2>Deployment and Development</h2>
+        <p>The API is deployed using Vercel.</p>
+
+        <h2>Example Use Cases</h2>
+        <ul>
+            <li><strong>Generate Custom Graphics</strong>: Use the API to create pixel-art designs for games or illustrations.</li>
+            <li><strong>Dynamic Visualizations</strong>: Integrate the API into web applications to generate real-time visual data.</li>
+            <li><strong>Learning and Experimentation</strong>: Use the API as a tool for learning bitmap-based image generation.</li>
+        </ul>
+
+        <hr>
+
+        <h2>Additional Notes</h2>
+        <ul>
+            <li>Ensure the bitmap string is properly formatted to avoid errors.</li>
+            <li>The canvas size is set to 640x640 pixels, and each pixel is dynamically scaled to fit the grid.</li>
+            <li>This was mainly inspired by <a href="https://verumignis.com/bitmapgen/">bitmapgen</a></li>
+        </ul>
     </div>
-
-    <footer>
-      &copy; 2024 Barnacle API. All Rights Reserved.
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    ></script>
-    <!-- AOS JS -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      AOS.init();
-
-      document.getElementById("generate").addEventListener("click", function () {
-        const bitmap = document.getElementById("editor").value.replace(/\n/g, "-");
-        const url = `https://upgraded-barnacle-rust.vercel.app/generate?bitmap=${bitmap}`;
-        document.getElementById("result").innerHTML = \`<img src="\${url}" alt="Generated Bitmap" />\`;
-      });
-    </script>
-  </body>
+</body>
 </html>
