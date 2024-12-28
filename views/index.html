@@ -5,48 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Updated Barnacle API Documentation">
     <meta name="author" content="Barnacle Team">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <title>Updated Barnacle API Documentation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
     <style>
-        /* Make the markdown body take up the full viewport */
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            background-color: #121212; /* Dark background for easier reading */
-            color: #e0e0e0; /* Light gray text */
+        /* Global background and text colors */
+        body {
+            background-color: #121212; /* Dark background to match the color scheme */
+            color: #E0E0E0; /* Light text for readability */
             font-family: Arial, sans-serif;
         }
 
+        /* Ensure full width for markdown content */
         .markdown-body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
+            max-width: 100%;
+            margin: 0 auto;
             padding: 20px;
-            background-color: #1f1f1f; /* Dark gray background for the content */
-            box-sizing: border-box;
-            overflow-y: auto;
+            background-color: #1E1E1E; /* Matching the background to the dark color theme */
+            border-radius: 8px;
         }
 
-        h1, h2, h3, h4 {
-            color: #f1f1f1; /* Lighter color for headings */
-        }
-
-        p, li {
-            color: #d0d0d0; /* Softer light gray for paragraphs and list items */
-        }
-
-        pre {
-            background-color: #2e2e2e; /* Darker background for code blocks */
-            padding: 1em;
-            border-radius: 5px;
-            color: #f1f1f1; /* Light text inside code blocks */
-            overflow-x: auto;
-        }
-
+        /* Color swatches for Base10 Color Key */
         .color-box {
             display: inline-block;
             width: 20px;
@@ -54,24 +33,63 @@
             margin-left: 10px;
         }
 
-        .request-line {
-            color: #007acc; /* Blue for request lines */
-        }
-
-        .keyword {
-            font-weight: bold;
-        }
-
-        .url {
-            color: #d73a49; /* Red for URL */
-        }
-
-        .parameter {
-            color: #6f42c1; /* Purple for parameters */
+        /* Code block and table styling */
+        pre {
+            background-color: #2D2D2D; /* Darker background for code blocks */
+            padding: 1em;
+            border-radius: 5px;
+            color: #D4D4D4; /* Lighter text in code blocks */
+            overflow-x: auto;
         }
 
         code {
             font-family: monospace;
+            color: #D4D4D4; /* Light text color */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #444;
+        }
+
+        th {
+            background-color: #333;
+            color: #E0E0E0; /* Light text color for table headers */
+        }
+
+        td {
+            background-color: #262626; /* Slightly darker background for table cells */
+            color: #E0E0E0;
+        }
+
+        .color-box {
+            width: 25px;
+            height: 25px;
+        }
+
+        /* Add highlight.js style to syntax highlighting */
+        .hljs {
+            background: #2D2D2D; /* Code block background */
+            color: #D4D4D4; /* Code text color */
+        }
+
+        .hljs-keyword {
+            color: #FF9800; /* Orange color for keywords */
+        }
+
+        .hljs-string {
+            color: #00FF00; /* Green color for strings */
+        }
+
+        .hljs-number {
+            color: #FF0000; /* Red color for numbers */
         }
     </style>
 </head>
@@ -105,13 +123,14 @@
                 <tr><td>9</td><td>Gray</td><td><span class="color-box" style="background-color: gray;"></span></td></tr>
             </tbody>
         </table>
+        <p>Each bitmap must consist of <strong>16 lines</strong> with <strong>16 digits per line</strong>, separated by hyphens (<code>-</code>).</p>
 
         <h2>API Endpoint</h2>
         <h3><code>GET /generate</code></h3>
         <p>Generates a PNG image from a bitmap string.</p>
 
         <h4>Base URL</h4>
-        <p>The API is hosted at: <a href="https://upgraded-barnacle-rust.vercel.app/" style="color: #63b8ff;">https://upgraded-barnacle-rust.vercel.app/</a></p>
+        <p>The API is hosted at: <a href="https://upgraded-barnacle-rust.vercel.app/">https://upgraded-barnacle-rust.vercel.app/</a></p>
 
         <h4>Query Parameters</h4>
         <ul>
@@ -119,7 +138,7 @@
         </ul>
 
         <h4>Example Request</h4>
-        <pre><code class="request-line">GET <span class="url">https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000</span></code></pre>
+        <pre><code>GET https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000</code></pre>
 
         <h4>Example Response</h4>
         <p>A PNG image is returned that visually represents the provided bitmap.</p>
@@ -149,8 +168,21 @@
         <h2>Example Use Cases</h2>
         <ul>
             <li><strong>Generate Custom Graphics</strong>: Use the API to create pixel-art designs for games or illustrations.</li>
-            <li><strong>Dynamic Visualizations</strong>: Integrate the API into your app to display dynamic bitmap-based graphics.</li>
+            <li><strong>Dynamic Visualizations</strong>: Integrate the API into web applications to generate real-time visual data.</li>
+            <li><strong>Learning and Experimentation</strong>: Use the API as a tool for learning bitmap-based image generation.</li>
+        </ul>
+
+        <hr>
+
+        <h2>Additional Notes</h2>
+        <ul>
+            <li>Ensure the bitmap string is properly formatted to avoid errors.</li>
+            <li>The canvas size is set to 640x640 pixels, and each pixel is dynamically scaled to fit the grid.</li>
+            <li>This was mainly inspired by <a href="https://verumignis.com/bitmapgen/">bitmapgen</a></li>
         </ul>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </body>
 </html>
