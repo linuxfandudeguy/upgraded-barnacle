@@ -11,7 +11,12 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <!-- AOS CSS for animations -->
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- AOS CSS -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
     <style>
@@ -19,8 +24,6 @@
         font-family: "Roboto", sans-serif;
         background-color: #f9f9fb;
         color: #333;
-        margin: 0;
-        padding: 0;
       }
 
       .container {
@@ -34,10 +37,9 @@
 
       h1,
       h2,
-      h3,
-      h4 {
+      h3 {
         color: #2c3e50;
-        font-weight: bold;
+        font-weight: 700;
       }
 
       h1 {
@@ -46,16 +48,13 @@
         text-align: center;
       }
 
-      p {
-        font-size: 1rem;
-        line-height: 1.6;
-      }
-
       table {
         width: 100%;
-        margin: 20px 0;
         border-collapse: separate;
         border-spacing: 0;
+        margin-top: 20px;
+        border-radius: 10px;
+        overflow: hidden;
       }
 
       table th,
@@ -67,7 +66,6 @@
       table th {
         background-color: #f2f2f2;
         font-weight: bold;
-        text-align: left;
       }
 
       table td {
@@ -83,33 +81,24 @@
         overflow-x: auto;
       }
 
-      code {
-        background-color: #eef;
-        padding: 2px 5px;
-        border-radius: 4px;
-      }
-
       .btn-primary {
         background-color: #007bff;
         border-color: #007bff;
         color: white;
-        padding: 10px 15px;
-        font-size: 1rem;
         border-radius: 5px;
-        text-decoration: none;
-        display: inline-block;
       }
 
-      .btn-primary:hover {
-        background-color: #0056b3;
-        border-color: #004085;
-        text-decoration: none;
-        color: white;
-      }
-
-      .highlight {
-        font-weight: bold;
-        color: #e74c3c;
+      #editor {
+        font-family: monospace;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        width: 100%;
+        height: 300px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #f4f4f9;
+        resize: none;
       }
 
       footer {
@@ -117,8 +106,13 @@
         padding: 20px 0;
         background: #f4f4f4;
         border-top: 1px solid #ddd;
-        margin-top: 30px;
         font-size: 0.9rem;
+      }
+
+      img {
+        max-width: 100%;
+        border-radius: 10px;
+        margin-top: 20px;
       }
     </style>
   </head>
@@ -126,23 +120,23 @@
     <div class="container" data-aos="fade-up">
       <h1>Updated Barnacle API Documentation</h1>
       <p class="text-muted">
-        This documentation provides all the information you need to use the
-        Updated Barnacle API for generating bitmap images.
+        This API enables you to generate bitmap images using a simple 16x16 grid
+        format. Perfect for pixel art or experimentation with bitmap-based graphics.
       </p>
 
-      <section data-aos="fade-up" data-aos-delay="100">
+      <section>
         <h2>Overview</h2>
         <p>
-          The Updated Barnacle API allows users to generate bitmap images using
-          a 16x16 grid format and the <code>canvas</code> library. Each
-          character in the bitmap string corresponds to a color, which is
-          rendered into a PNG image.
+          The Updated Barnacle API creates PNG images based on a 16x16 bitmap grid.
+          Each character in the grid corresponds to a specific color, as defined
+          by the Base10 Color Key. Any missing or empty sections of the grid will
+          default to black.
         </p>
       </section>
 
-      <section data-aos="fade-up" data-aos-delay="200">
+      <section>
         <h2>Base10 Color Key</h2>
-        <table class="table table-striped table-bordered">
+        <table class="table table-bordered">
           <thead>
             <tr>
               <th>Code</th>
@@ -194,20 +188,16 @@
         </table>
       </section>
 
-      <section data-aos="fade-up" data-aos-delay="300">
+      <section>
         <h2>API Endpoint</h2>
         <h3>GET /generate</h3>
-        <p>
-          This endpoint generates a PNG image from a 16x16 bitmap string. Each
-          bitmap line must contain 16 digits, separated by
-          <code>-</code>.
-        </p>
-        <h4>Base URL</h4>
-        <p>
-          <a href="https://upgraded-barnacle-rust.vercel.app/" target="_blank">
-            https://upgraded-barnacle-rust.vercel.app/
-          </a>
-        </p>
+        <p>Generates a PNG image from a 16x16 bitmap string.</p>
+        <p><strong>Base URL:</strong> <a href="https://upgraded-barnacle-rust.vercel.app/" target="_blank">https://upgraded-barnacle-rust.vercel.app/</a></p>
+
+        <h4>Query Parameters</h4>
+        <ul>
+          <li><strong>bitmap (required):</strong> A 16x16 bitmap string. Each line should have exactly 16 digits, separated by hyphens (<code>-</code>).</li>
+        </ul>
 
         <h4>Example Request</h4>
         <pre>
@@ -215,40 +205,52 @@ GET https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0
         </pre>
 
         <h4>Example Response</h4>
+        <p>A PNG image representing the bitmap.</p>
         <img
           src="https://upgraded-barnacle-rust.vercel.app/generate?bitmap=0000000000000000-0000000000000000-0000000000000000-0000000222200000-0000002222220000-0000002277770000-0000222277770000-0000222222220000-0000222222220000-0000222222220000-0000222222220000-0000002200220000-0000002200220000-0000000000000000-0000000000000000-0000000000000000"
-          alt="Generated Example"
-          style="max-width: 100%; border-radius: 10px;"
+          alt="Generated Bitmap"
         />
-      </section>
 
-      <section data-aos="fade-up" data-aos-delay="400">
-        <h2>Error Responses</h2>
+        <h4>Error Responses</h4>
         <ul>
-          <li>
-            <strong>400 Bad Request:</strong> Returned if the bitmap is
-            invalid. Example:
-            <code>Invalid bitmap. Must be 16 lines of 16 digits each.</code>
-          </li>
-          <li>
-            <strong>500 Internal Server Error:</strong> Returned if the image
-            cannot be generated.
-          </li>
+          <li><code>400 Bad Request</code>: Invalid bitmap format.</li>
+          <li><code>500 Internal Server Error</code>: Unable to generate the image.</li>
         </ul>
       </section>
 
-
+      <section>
+        <h2>Pixel Art Editor (Demo)</h2>
+        <p>
+          Use the editor below to input your 16x16 bitmap string. Click "Generate Image"
+          to see the output.
+        </p>
+        <textarea
+          id="editor"
+          placeholder="0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000-0000000000000000"
+        ></textarea>
+        <button id="generate" class="btn btn-primary mt-3">Generate Image</button>
+        <div id="result"></div>
+      </section>
     </div>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <footer>
+      &copy; 2024 Barnacle API. All Rights Reserved.
+    </footer>
 
+    <!-- Bootstrap JS -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    ></script>
     <!-- AOS JS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
       AOS.init();
+
+      document.getElementById("generate").addEventListener("click", function () {
+        const bitmap = document.getElementById("editor").value.replace(/\n/g, "-");
+        const url = `https://upgraded-barnacle-rust.vercel.app/generate?bitmap=${bitmap}`;
+        document.getElementById("result").innerHTML = \`<img src="\${url}" alt="Generated Bitmap" />\`;
+      });
     </script>
   </body>
 </html>
